@@ -58,7 +58,7 @@
                     <a class="hiddenanchor" id="tologin"></a>
                     <div id="wrapper">
                         <div id="login" class="animate form">
-                            <form  action="informationinput.do" method="post"  enctype="multipart/form-data"> 
+                            <form  action="informationinputsss.do" method="post"  enctype="multipart/form-data"> 
                                 <h1>Log in</h1> 
                                 <p> 
                                     <label for="user_name" class="uname" data-icon="u" > Your username </label>
@@ -89,21 +89,7 @@
                                      <input id="user_birthdate"  class="birthday" name="user_birthdate" required="required" type="text" placeholder="user_birthdate"/> 
                                 	
                                 </p>
-                                    <script>
-									$(document).on("keyup blur","#user_idnumber",function(){
-    								var code=$(this).val();
-    								var len=code.length;
-    								if ($.trim($(this).val().length)>6)
-										$("#user_birthdate").attr("value",code.substr(6,4)+'-'+code.substr(10,2)+'-'+code.substr(12,2));
-       									// $(".birthday").value(code.substr(6,4)+'-'+code.substr(10,2)+'-'+code.substr(12,2));
-    								else
-    									$("#user_birthdate").attr("value","");
-    
-									});
-									</script>
-                                    
-                                    
-                                
+                               
                                 <p> 
                                     <label for="user_political" class="uname" data-icon="u" > Your user_political </label>
                                     <input id="user_political" name="user_political" required="required" type="text" placeholder="user_political"/>
@@ -111,16 +97,18 @@
 
                                 <p> 
                                     <label for="user_img" class="uname" data-icon="u" > Your user_img </label>
-                                    <input id="user_img" name="user_img" required="required" type="file" placeholder="user_desc" onchange="imgPreview(this)" "/>
+                                    <input id="user_img" name="user_img" required="required" type="file"  onchange="imgPreview(this)" "/>
                                 </p>
                                 
-                                <p id="localImag"> 
-                                <label for="user_imgpreview" class="uname" data-icon="u" >  </label>
-                                    <img id="preview" width="100" height="100" style="diplay:none" />
-                                </p>
+                                
                                 <p> 
-                                    <label for="user_desc" class="uname" data-icon="u" > Your user_political </label>
-                                    <input id="user_desc" name="user_political" required="required" type="text" placeholder="user_political"/>
+                                    <label for="user_desc" class="uname" data-icon="u" > Your user_desc </label>
+                                    <input id="user_desc" name="user_desc" required="required" type="text" placeholder="user_political"/>
+                                </p>
+                                
+                                <p> 
+                                    <label for="user_status" class="uname" data-icon="u" > Your user_status </label>
+                                    <input id="user_status" name="user_status" required="required" type="text" placeholder="user_political"/>
                                 </p>
 
                                 

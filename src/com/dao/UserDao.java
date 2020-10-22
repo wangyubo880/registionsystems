@@ -8,6 +8,7 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.bean.Student;
 import com.bean.User;
 
 @Repository
@@ -45,6 +46,29 @@ public class UserDao {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.getCurrentSession();
 		session.save(user);
+		return true;
+	}
+	//报名信息填写
+	public boolean informationinput(Student student,String user_img) {
+		// TODO Auto-generated method stub
+		Session session = sessionFactory.getCurrentSession();
+		student.setUser_img(user_img);
+		session.save(student);
+		return true;
+	}
+	//报名信息填写测试
+	public boolean informationinputs(Student student) {
+		// TODO Auto-generated method stub
+		Session session = sessionFactory.getCurrentSession();
+		session.save(student);
+		return true;
+	}
+	//报名信息测试2
+	public boolean informationinputss(Student student,String user_img) {
+		// TODO Auto-generated method stub
+		Session session = sessionFactory.getCurrentSession();
+		student.setUser_img(user_img);
+		session.save(student);
 		return true;
 	}
 
