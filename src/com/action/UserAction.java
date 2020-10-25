@@ -45,8 +45,8 @@ public class UserAction {
 			//Integer uid=(Integer)session.getAttribute("uid");
 			System.out.println(uid);
 			//List<Relation> list=relationService.findRelationById(uid);
-			return "redirect:relation.do";
-			//return "informationinput";
+			//return "redirect:relation.do";  //传给action
+			return "informationinput";
 			//return "relation";  //直接传给jsp
 			
 		}else {

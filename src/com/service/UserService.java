@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
+import com.bean.Relation;
 import com.bean.Student;
 import com.bean.User;
 import com.dao.StudentDao;
@@ -17,7 +17,8 @@ import com.dao.UserDao;
 public class UserService {
 	@Autowired
 	private UserDao userDao;
-	private StudentDao studentDao;
+//	@Autowired
+//	private StudentDao studentDao;
 	//用户登录
 	public boolean login(String username,String userpassword) {
 		return userDao.login(username, userpassword);
@@ -38,7 +39,7 @@ public class UserService {
 	//报名信息测试
 	public boolean inputinformations(Student student) {
 		// TODO Auto-generated method stub
-		return userDao.informationinputs(student);
+		return userDao.studentinformationinputs(student);
 	}
 	//报名信息测试2
 	public boolean inputinformationss(Student student,String user_img) {
@@ -47,8 +48,9 @@ public class UserService {
 	}
 	//报名信息测试4
 	//修改商品信息
-	public boolean inputinformationsss(Student student) {
-		return studentDao.inputinformationupload(student);
-	}
+//	public boolean inputinformationsss(Student student) {
+//		return studentDao.inputinformationupload(student);
+//	}
+
 
 }

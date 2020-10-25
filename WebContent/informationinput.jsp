@@ -188,8 +188,9 @@ td
                                     <label for="user_desc" class="uname" data-icon="u" > Your user_desc </label>
                                     <input id="user_desc" name="user_desc" required="required" type="text" placeholder="user_desc"/>
                                 </p>
+                                <!--  
 <p>
-<table border="1">
+<table  class="altrowstable" id="alternatecolor" align="center">
 <tr><th>与本人关系</th>
 <th>姓名</th>
 <th>工作单位</th>
@@ -209,11 +210,11 @@ td
 </c:forEach>
 
 </table>
-</p>
+</p>-->
                                 
             					
                                 <p > 
-                                    <input type="submit" value="提交信息" /> 
+                                    <input type="submit" value="保存" /> 
 								</p>
                                 <p class="change_link">
 									Not a member yet ?

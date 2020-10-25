@@ -57,7 +57,7 @@ public class UserDao {
 		return true;
 	}
 	//报名信息填写测试
-	public boolean informationinputs(Student student) {
+	public boolean studentinformationinputs(Student student) {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.getCurrentSession();
 		session.save(student);
