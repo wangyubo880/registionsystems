@@ -1,6 +1,7 @@
 package com.action;
 
 import java.io.File;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -13,14 +14,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.bean.Relation;
 import com.bean.Student;
 import com.bean.User;
+import com.service.RelationService;
 import com.service.UserService;
 
 @Controller
 public class StudentAction {
 	@Autowired
 	private UserService userService;
+	private RelationService relationService;
 	//报名测试3
 //	@RequestMapping("/informationinputsss")
 //	public String registerss(Student student,@RequestParam("user_img") MultipartFile user_img)throws Exception {
@@ -28,8 +32,12 @@ public class StudentAction {
 //	    return "informationinput";
 //	}
 	//报名测试4
-	@RequestMapping("/informationinputsss")
-	public String updateMessage(HttpSession session,Model model,HttpServletRequest request,@RequestParam("user_name") String user_name,@RequestParam("userid") Integer userid,@RequestParam("user_phone") String user_phone,@RequestParam("user_gender") String user_gender,@RequestParam("user_national") String user_national,@RequestParam("user_idnumber") String user_idnumber,@RequestParam("user_birthdate") String user_birthdate,@RequestParam("user_political") String user_political,@RequestParam("user_desc") String user_desc,@RequestParam("user_status") String user_status,@RequestParam("user_img") MultipartFile user_img) throws Exception{
+	@RequestMapping("/informationinput")
+	public String updateMessage(HttpSession session,Model model,HttpServletRequest request,@RequestParam("user_name") String user_name,@RequestParam("user_phone") String user_phone,@RequestParam("user_gender") String user_gender,@RequestParam("user_national") String user_national,@RequestParam("user_idnumber") String user_idnumber,@RequestParam("user_birthdate") String user_birthdate,@RequestParam("user_political") String user_political,@RequestParam("user_desc") String user_desc,@RequestParam("user_img") MultipartFile user_img) throws Exception{
+		List<Relation> list=relationService.findAll();
+		model.addAttribute("relationlist",list);
+		
+		Integer userid=(Integer)session.getAttribute("uid");
 		System.out.println(user_img);
 		System.out.println(user_name);
 		System.out.println(userid);
@@ -50,7 +58,7 @@ public class StudentAction {
 		student.setUser_idnumber(user_idnumber);
 		student.setUser_political(user_political);
 		student.setUser_desc(user_desc);
-		student.setUser_status(user_status);
+		student.setUser_status("草稿");
 		
 //		User user=new User();
 //		user.setName(name);
@@ -79,10 +87,11 @@ public class StudentAction {
 		//boolean result=userService.inputinformationsss(student);
 		boolean result=userService.inputinformations(student);
 		if(result) {
-			return "login";
+			return "informationlist";
 		}else {
 			return "login";
 		}
 	}
+	
 
 }

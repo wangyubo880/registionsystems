@@ -1,6 +1,7 @@
 package com.action;
 
 import java.io.File;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -13,32 +14,46 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.bean.Relation;
 import com.bean.Student;
 import com.bean.User;
+import com.service.RelationService;
 import com.service.UserService;
 
 @Controller
 public class UserAction {
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private RelationService relationService;
 	//用户登录
 	@RequestMapping("/login")
-	public String login(String username,String userpassword,Model model1,Model model2,HttpSession session,User user) {
+	public String login(Model model,String username,String userpassword,Model model1,Model model2,HttpSession session,User user) {
 		boolean result=userService.login(username, userpassword);
 		if(result) {
 			model1.addAttribute("username",username);
 			int uid=userService.selectid(username);
 			model2.addAttribute("userid",uid);
 			session.setAttribute("username", username);
-			session.setAttribute("uid", uid);
+			System.out.println(username);
+			System.out.println(userpassword);
+			session.setAttribute("uid", uid);  //获取userid
+			System.out.println(uid);
 			System.out.println("登陆成功");
-			return "informationinput2";
-			//return "redirect:informationinput2.jsp";
+//			List<Relation> list=relationService.findAll();
+//			model.addAttribute("relationlist",list);
+			//Integer uid=(Integer)session.getAttribute("uid");
+			System.out.println(uid);
+			//List<Relation> list=relationService.findRelationById(uid);
+			return "redirect:relation.do";
+			//return "informationinput";
+			//return "relation";  //直接传给jsp
+			
 		}else {
 			model1.addAttribute("errormsg", "登录失败");
 			System.out.println("登录失败");
 			//return "index";
-			return "informationinput2";
+			return "login";
 		}
 	}
 	//用户注册
@@ -46,14 +61,15 @@ public class UserAction {
 	public String register(User user,Model model) {
 		boolean result = userService.register(user);
 		if(result) {
-			return "redirect:login.do";
+			return "index";
+			//return "redirect:login.do";
 		}else {
 			model.addAttribute("errormsg", "注册失败");
 			return "register";
 		}
 	}
 	//报名错误
-	@RequestMapping("/informationinput")
+	@RequestMapping("/informationinputsss")
 	public String informationinput(Student student,Model model,HttpServletRequest request,@RequestParam("user_img") MultipartFile user_img)throws Exception {
 		System.out.println(user_img);
 	    try {

@@ -64,10 +64,10 @@
                                     <label for="user_name" class="uname" data-icon="u" > Your username </label>
                                     <input id="user_name" name="user_name" required="required" type="text" placeholder="user_name"/>
                                 </p>
-                                <p> 
+                                <!-- <p> 
                                     <label for="userid" class="uname" data-icon="u" > Your userid </label>
                                     <input id="userid" name="userid" required="required" type="text" placeholder="userid"/>
-                                </p>
+                                </p> -->
                                 <p> 
                                     <label for="user_phone" class="uname" data-icon="u" > Your telephone </label>
                                     <input id="user_phone" name="user_phone" required="required" type="text" placeholder="user_phone"/>
