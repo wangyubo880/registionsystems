@@ -20,6 +20,10 @@ public class StudentService {
 		List<Student> list=studentDao.selectById(id);
 		return list;
 	}
+	//修改学生信息
+	public boolean updateStudentMessage(Student student,Integer id) {
+		return studentDao.updateStudentMessage(student, id);
+	}
 
 
 }

@@ -123,7 +123,7 @@ td
                         <div id="login" class="animate form">
 <!--  
 <table class="altrowstable" id="alternatecolor" align="center">-->
-							<form action="informationlist.do" method="post" enctype="multipart/form-data">
+							<form action="updatestudentmessage.do" method="post" enctype="multipart/form-data">
 							<c:forEach items="${studentMessagelists}" var="student">
                              
                                 <h1>Log in</h1> 
