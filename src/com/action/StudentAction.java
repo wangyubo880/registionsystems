@@ -116,6 +116,9 @@ public class StudentAction {
 		System.out.println("uid"+uid);
 		List<Student> list=studentService.findStudentById(uid);
 		model.addAttribute("studentMessagelists",list);
+		List<Relation> lists=relationService.findRelationById(uid);
+		model.addAttribute("relationlist",lists);
+		//return "redirect:relation.do"; 
 		return "informationlist";
 	}
 //	@RequestMapping("/relation")

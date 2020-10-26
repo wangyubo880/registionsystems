@@ -24,6 +24,15 @@ public class RelationService {
 		List<Relation> list=relationDao.selectRelationById(id);
 		return list;
 	}
+	//添加家庭关系
+	public boolean addRelation(Relation relation) {
+		// TODO Auto-generated method stub
+		return relationDao.insertRelation(relation);
+	}
+	//删除某条家庭关系
+	public boolean deleteRelationById(Integer id) {
+		return relationDao.deleteRelationById(id);
+	}
 
 
 }

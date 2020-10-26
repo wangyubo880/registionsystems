@@ -42,14 +42,32 @@ public class StudentDao {
 	//显示保存后的信息
 	public List<Student> selectById(Integer userid){
 		Session session = sessionFactory.getCurrentSession();
-		Query query=session.createQuery("from Student s where userid=?");
+		Query query=session.createQuery("from Student s where s.userid=?");
 //		query.setParameter(0, userid);
 //		List<Student> lists=query.list();
 //		return lists;
 		List<Student> list=query.setParameter(0, userid).list();
 		return list;
 	}
-
+//	//查询当前状态
+//	public String selectStatusById(Integer userid) {
+//		Session session = sessionFactory.getCurrentSession();
+//		Query query=session.createQuery("from Student s where s.userid=?");
+//		
+//	}
+//	
+//	//登录
+//	public boolean login(String username,String userpassword) {
+//		Session session=sessionFactory.getCurrentSession();
+//		Query query=session.createQuery("from User u where u.username=? and u.userpassword=?");
+//	    List<User>lists = query.setString(0, username).setString(1, userpassword).list();
+//		if(lists.size()>0) {
+//			return true;
+//		}else {
+//			return false;
+//		}
+//			}
+//
 
 
 }

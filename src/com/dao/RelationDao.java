@@ -30,6 +30,24 @@ public class RelationDao {
 		List<Relation> list=query.setParameter(0, userid).list();
 		return list;
 	}
+	//添加当前用户家庭关系
+	public boolean insertRelation(Relation relation) {
+		// TODO Auto-generated method stub
+		Session session = sessionFactory.getCurrentSession();
+		session.save(relation);
+		return true;
+	}
+	//删除某条家庭关系
+	public boolean deleteRelationById(Integer relation_id) {
+		Session session=sessionFactory.getCurrentSession();
+		Query query=session.createQuery("delete from Relation where relation_id=?");
+		int result=query.setParameter(0, relation_id).executeUpdate();
+		if(result>0) {
+			return true;
+		}else {
+			return false;
+		}
+	}
 
 
 }

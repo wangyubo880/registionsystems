@@ -183,13 +183,18 @@ td
                                 
                                 <p id="localImag"> 
                                 <label for="user_imgpreview" class="uname" data-icon="u" >  </label>
-                                    <img id="preview" width="100" height="100" style="diplay:none" />
+                                    <img id="preview" src="admins/bookimg/${student.user_img}" width="100" height="100" style="diplay:none" />
+                                    
+                                    <!-- <img src="admins/bookimg/${carts.img}" class="img-responsive" alt=""> -->
                                 </p>
                                 <p> 
                                     <label for="user_desc" class="uname" data-icon="u" > Your user_desc </label>
                                     <input id="user_desc" name="user_desc" value=${student.user_desc } required="required" type="text" placeholder="user_desc"/>
                                 </p>
                                 </c:forEach>
+                                 <p > 
+                                    <input type="submit" value="保存" /> 
+								</p>
 <p>
 <table  class="altrowstable" id="alternatecolor" align="center">
 <tr><th>与本人关系</th>
@@ -205,18 +210,27 @@ td
 	<td>${relation.relation_workunits}</td>
 	<td>${relation.relation_telephone}</td>
 	
-	<td><a href="update.do?id=${relation.relation_id}">修改</a>||
-	<a href="delete.do?id=${relation.relation_id}">删除</a></td>
+	<td><a href="updaterelation.do">修改</a>
+	</td>
 	</tr>
 </c:forEach>
+<!--  
+<tr>
+<form action="relationinput.do" method="post" >
+	<td><input id="user_name" name="user_name"  type="text" placeholder="与本人关系"/></td>
+	<td><input id="user_phone" name="user_phone"  type="text" placeholder="姓名"/></td>
+	<td><input id="user_phone" name="user_phone"  type="text" placeholder="工作单位"/></td>
+	<td><input id="user_phone" name="user_phone"  type="text" placeholder="联系电话"/></td>
+	<td><input type="submit" value="保存" />
+	</td>
+</tr>
+ -->
 
 </table>
 </p>
                                 
             					
-                                <p > 
-                                    <input type="submit" value="保存" /> 
-								</p>
+                               
                                 <p class="change_link">
 									Not a member yet ?
 									
