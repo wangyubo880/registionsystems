@@ -24,8 +24,14 @@ public class StudentDao {
 //		List<Student> list=query.setParameter(0, id).list();
 //		String status=list.get(0).toString();
 		Object statu = query.uniqueResult();
-		String status=statu.toString();
-		return status;
+		if(statu==null) {
+			String status="0";
+			return status;
+		}else {
+			String status=statu.toString();
+			return status;
+		}
+		
 		
 	}
 	//修改学生信息

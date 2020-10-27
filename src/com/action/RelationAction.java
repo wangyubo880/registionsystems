@@ -69,7 +69,7 @@ public class RelationAction {
 			return "deletebyid";
 		}
 	}
-	//显示需要修改的某条家庭关系  先在jsp显示，当前条在input框中  showUpdateRelationById  还没写完！！！！ 显示后再调用修改方法，添加input框不要放东西
+	//显示需要修改的某条家庭关系  
 	@RequestMapping("/showUpdateRelationById")
 	public String showUserMessage(Integer id,HttpSession session,Model model){
 		//Integer uid=(Integer)session.getAttribute("uid");
@@ -91,7 +91,10 @@ public class RelationAction {
 		boolean result=relationService.updateRelationMessage(relation, relation_id);
 		//boolean result=userService.inputinformations(student);
 		if(result) {
-			return "redirect:informationlist.do"; 
+			
+			return "redirect:updaterelation.do"; 
+			//showUpdateRelationById
+			//return "redirect:informationlist.do"; 
 			//return "informationlist";
 		}else {
 			return "login";

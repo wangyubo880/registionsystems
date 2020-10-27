@@ -45,16 +45,16 @@ public class UserAction {
 		System.out.println(username);
 		System.out.println(userpassword);
 		session.setAttribute("uid", uid);  //获取userid
-		if(result&&status.equals("1")) {
+		if(result&&status.equals("1")) {  //状态1 草稿
 			
 			System.out.println(uid);
 			System.out.println("登陆成功");
 			return "redirect:informationlist.do"; 
 		}
-			else if(status.equals("2")){
+			else if(status.equals("2")){   //状态2 报名成功
 				return "login";
 			}else {
-				return "login";
+				return "informationinput";
 			}
 			
 //			List<Relation> list=relationService.findAll();

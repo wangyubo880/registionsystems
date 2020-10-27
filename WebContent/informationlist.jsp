@@ -197,11 +197,13 @@ td
 								</p>
 <p>
 <table  class="altrowstable" id="alternatecolor" align="center">
+<tr><th colspan="4">家庭关系</th></tr>
 <tr><th>与本人关系</th>
 <th>姓名</th>
 <th>工作单位</th>
 <th>联系电话</th>
-<th>操作</th></tr>
+<!-- <th><a href="updaterelation.do">修改</a></th> -->
+</tr>
 
 <c:forEach items="${relationlist}" var="relation">
 <tr>
@@ -210,10 +212,11 @@ td
 	<td>${relation.relation_workunits}</td>
 	<td>${relation.relation_telephone}</td>
 	
-	<td><a href="updaterelation.do">修改</a>
+	
 	</td>
 	</tr>
 </c:forEach>
+<tr><td colspan="4"><a href="updaterelation.do">修改</a></tr>
 <!--  
 <tr>
 <form action="relationinput.do" method="post" >
