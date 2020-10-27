@@ -18,6 +18,7 @@ import com.bean.Relation;
 import com.bean.Student;
 import com.bean.User;
 import com.service.RelationService;
+import com.service.StudentService;
 import com.service.UserService;
 
 @Controller
@@ -26,9 +27,55 @@ public class UserAction {
 	private UserService userService;
 	@Autowired
 	private RelationService relationService;
+	@Autowired
+	private StudentService studentService;
+	//查询用户状态
 	//用户登录
 	@RequestMapping("/login")
 	public String login(Model model,String username,String userpassword,Model model1,Model model2,HttpSession session,User user) {
+		boolean result=userService.login(username, userpassword);
+		int uid=userService.selectid(username);
+		String status=studentService.selectStudentStatus(uid);
+		System.out.println("用户状态");
+		System.out.println(status);
+		model1.addAttribute("username",username);
+		
+		model2.addAttribute("userid",uid);
+		session.setAttribute("username", username);
+		System.out.println(username);
+		System.out.println(userpassword);
+		session.setAttribute("uid", uid);  //获取userid
+		if(result&&status.equals("1")) {
+			
+			System.out.println(uid);
+			System.out.println("登陆成功");
+			return "redirect:informationlist.do"; 
+		}
+			else if(status.equals("2")){
+				return "login";
+			}else {
+				return "login";
+			}
+			
+//			List<Relation> list=relationService.findAll();
+//			model.addAttribute("relationlist",list);
+			//Integer uid=(Integer)session.getAttribute("uid");
+	//		System.out.println(uid);
+			//List<Relation> list=relationService.findRelationById(uid);
+			//return "redirect:relation.do";  //传给action
+			
+			//return "relation";  //直接传给jsp
+			
+//		}else {
+//			model1.addAttribute("errormsg", "登录失败");
+//			System.out.println("登录失败");
+//			//return "index";
+//			return "login";
+//		}
+	}
+	
+	@RequestMapping("/logins")
+	public String logins(Model model,String username,String userpassword,Model model1,Model model2,HttpSession session,User user) {
 		boolean result=userService.login(username, userpassword);
 		if(result) {
 			model1.addAttribute("username",username);
@@ -56,6 +103,7 @@ public class UserAction {
 			return "login";
 		}
 	}
+	
 	//用户注册
 	@RequestMapping("/register")
 	public String register(User user,Model model) {

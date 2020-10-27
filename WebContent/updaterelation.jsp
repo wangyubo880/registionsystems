@@ -122,38 +122,32 @@ td
                     <div id="wrapper">
                         <div id="login" class="animate form">
 
+							<form action="updateRelationmessage.do" method="post" enctype="multipart/form-data">
+							<c:forEach items="${relationlist}" var="relation">
+                             
+                                <h1>Update</h1> 
+                                <p> 
+                                    <label for="relation_relation" class="uname" data-icon="u" > 与本人关系 </label>
+                                    <input id="relation_relation" name="relation_relation" value=${relation.relation_relation } required="required" type="text" placeholder="user_name"/>
+                                </p>
+                                <p> 
+                                    <label for="relation_name" class="uname" data-icon="u" > 姓名 </label>
+                                    <input id="relation_name" name="relation_name" value=${relation.relation_name } required="required" type="text" placeholder="user_name"/>
+                                </p>
+                                                                <p> 
+                                    <label for="relation_workunits" class="uname" data-icon="u" > 工作单位 </label>
+                                    <input id="relation_workunits" name="relation_workunits" value=${relation.relation_workunits } required="required" type="text" placeholder="user_name"/>
+                                </p>
+                                                                <p> 
+                                    <label for="relation_telephone" class="uname" data-icon="u" > 联系电话 </label>
+                                    <input id="relation_telephone" name="relation_telephone" value=${relation.relation_telephone } required="required" type="text" placeholder="user_name"/>
+                                </p>
+                             	<input id="relation_id" name="relation_id" value=${relation.relation_id }  type="text" style="display:none"/>
+                                </c:forEach>
+                                 <p > 
+                                    <input type="submit" value="保存" /> 
+								</p>
 
-<p>
-<table  class="altrowstable" id="alternatecolor" align="center">
-<tr><th>与本人关系</th>
-<th>姓名</th>
-<th>工作单位</th>
-<th>联系电话</th>
-<th>操作</th></tr>
-
-<c:forEach items="${relationlist}" var="relation">
-<tr>
-	<td>${relation.relation_relation}</td>
-	<td>${relation.relation_name}</td>
-	<td>${relation.relation_workunits}</td>
-	<td>${relation.relation_telephone}</td>
-	
-	<td><a href="showUpdateRelationById.do?id=${relation.relation_id}">修改</a>||
-	<a href="deleteRelationById.do?id=${relation.relation_id}">删除</a></td>
-	</tr>
-</c:forEach>
-
-<tr>
-<form action="relationinput.do" method="post" >
-	<td><input id="relation_relation" name="relation_relation"  type="text" placeholder="与本人关系"/></td>
-	<td><input id="relation_name" name="relation_name"  type="text" placeholder="姓名"/></td>
-	<td><input id="relation_workunits" name="relation_workunits"  type="text" placeholder="工作单位"/></td>
-	<td><input id="relation_telephone" name="relation_telephone"  type="text" placeholder="联系电话"/></td>
-	<td><input type="submit" value="保存" />
-	</td>
-	</form>
-</tr>
- 
 
 </table>
 </p>
@@ -161,7 +155,7 @@ td
             					
                                
                                 <p class="change_link">
-									<a href="informationlist.do">返回</a>
+									Not a member yet ?
 									
 								</p>
                             </form>

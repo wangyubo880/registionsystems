@@ -188,29 +188,7 @@ td
                                     <label for="user_desc" class="uname" data-icon="u" > Your user_desc </label>
                                     <input id="user_desc" name="user_desc" required="required" type="text" placeholder="user_desc"/>
                                 </p>
-                                <!--  
-<p>
-<table  class="altrowstable" id="alternatecolor" align="center">
-<tr><th>与本人关系</th>
-<th>姓名</th>
-<th>工作单位</th>
-<th>联系电话</th>
-<th>操作</th></tr>
-
-<c:forEach items="${relationlist}" var="relation">
-<tr>
-	<td>${relation.relation_relation}</td>
-	<td>${relation.relation_name}</td>
-	<td>${relation.relation_workunits}</td>
-	<td>${relation.relation_telephone}</td>
-	
-	<td><a href="update.do?id=${relation.relation_id}">修改</a>||
-	<a href="delete.do?id=${relation.relation_id}">删除</a></td>
-	</tr>
-</c:forEach>
-
-</table>
-</p>-->
+  
                                 
             					
                                 <p > 

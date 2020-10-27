@@ -24,6 +24,10 @@ public class StudentService {
 	public boolean updateStudentMessage(Student student,Integer id) {
 		return studentDao.updateStudentMessage(student, id);
 	}
+	//²éÑ¯×´Ì¬
+	public String selectStudentStatus(Integer id) {
+		return studentDao.selectStudentStatus(id);
+	}
 
 
 }

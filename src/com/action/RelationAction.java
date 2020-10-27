@@ -69,5 +69,35 @@ public class RelationAction {
 			return "deletebyid";
 		}
 	}
+	//显示需要修改的某条家庭关系  先在jsp显示，当前条在input框中  showUpdateRelationById  还没写完！！！！ 显示后再调用修改方法，添加input框不要放东西
+	@RequestMapping("/showUpdateRelationById")
+	public String showUserMessage(Integer id,HttpSession session,Model model){
+		//Integer uid=(Integer)session.getAttribute("uid");
+		System.out.println("输出relationid");
+		System.out.println(id);
+		List<Relation> list=relationService.findRelationByRelationId(id);
+		model.addAttribute("relationlist",list);
+		return "updaterelation";
+
+	}
+	//修改某条家庭关系
+	@RequestMapping("/updateRelationmessage")
+	public String updateRelationMessage(@RequestParam("relation_id") Integer relation_id,@RequestParam("relation_relation") String relation_relation,@RequestParam("relation_name") String relation_name,@RequestParam("relation_workunits") String relation_workunits,@RequestParam("relation_telephone") String relation_telephone,Integer id,HttpSession session,Model model){
+		Relation relation=new Relation();
+		relation.setRelation_relation(relation_relation);
+		relation.setRelation_name(relation_name);
+		relation.setRelation_telephone(relation_telephone);
+		relation.setRelation_workunits(relation_workunits);
+		boolean result=relationService.updateRelationMessage(relation, relation_id);
+		//boolean result=userService.inputinformations(student);
+		if(result) {
+			return "redirect:informationlist.do"; 
+			//return "informationlist";
+		}else {
+			return "login";
+		}
+
+
+	}
 
 }

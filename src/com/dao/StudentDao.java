@@ -16,6 +16,18 @@ import com.bean.User;
 public class StudentDao {
 	@Autowired
 	private SessionFactory sessionFactory;
+	//查询状态
+	public String selectStudentStatus(Integer id) {
+		Session session=sessionFactory.getCurrentSession();
+		Query query=session.createQuery("select s.user_status from Student s where userid=?");
+		query.setParameter(0, id);
+//		List<Student> list=query.setParameter(0, id).list();
+//		String status=list.get(0).toString();
+		Object statu = query.uniqueResult();
+		String status=statu.toString();
+		return status;
+		
+	}
 	//修改学生信息
 	public boolean updateStudentMessage(Student student,Integer userid) {
 		Session session=sessionFactory.getCurrentSession();

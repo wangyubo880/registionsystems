@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 
 import com.bean.Relation;
+import com.bean.Student;
 import com.bean.User;
 
 @Repository
@@ -47,6 +48,31 @@ public class RelationDao {
 		}else {
 			return false;
 		}
+	}
+	//修改家庭信息
+	public boolean updateRelationMessage(Relation relation,Integer relation_id) {
+		Session session=sessionFactory.getCurrentSession();
+		Query query=session.createQuery("update Relation r set r.relation_relation=?,r.relation_name=?,r.relation_telephone=?,r.relation_workunits=? where relation_id=?");
+		
+		query.setParameter(0, relation.getRelation_relation());
+		query.setParameter(1, relation.getRelation_name());
+		query.setParameter(2, relation.getRelation_telephone());
+		query.setParameter(3, relation.getRelation_workunits());
+		query.setParameter(4, relation_id);
+
+		int result=query.executeUpdate();
+		if(result>0) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	//查找某条家庭信息
+	public List<Relation> selectRelationByRelationId(Integer relation_id){
+		Session session=sessionFactory.getCurrentSession();
+		Query query=session.createQuery("from Relation r where relation_id=?");
+		List<Relation> list=query.setParameter(0, relation_id).list();
+		return list;
 	}
 
 

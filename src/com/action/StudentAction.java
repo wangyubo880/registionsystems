@@ -62,7 +62,7 @@ public class StudentAction {
 		student.setUser_idnumber(user_idnumber);
 		student.setUser_political(user_political);
 		student.setUser_desc(user_desc);
-		student.setUser_status("草稿");
+		student.setUser_status("1");  //状态
 		//student.setUserinformation_id(8);
 		
 //		User user=new User();
@@ -111,12 +111,17 @@ public class StudentAction {
 	}
 	//第一部分保存后显示
 	@RequestMapping("/informationlist")
-	public String showStudentMessage(HttpSession session,Model model) {
+	public String showStudentMessage(HttpSession session,Model model) throws Exception{
 		Integer uid=(Integer)session.getAttribute("uid");
 		System.out.println("uid"+uid);
 		List<Student> list=studentService.findStudentById(uid);
 		model.addAttribute("studentMessagelists",list);
 		List<Relation> lists=relationService.findRelationById(uid);
+//		System.out.println("输出list中第一个值");
+//		System.out.println(list.get(0));
+//		System.out.println("输出list中第2个值");
+//		System.out.println(list.get(1));
+		
 		model.addAttribute("relationlist",lists);
 		//return "redirect:relation.do"; 
 		return "informationlist";
