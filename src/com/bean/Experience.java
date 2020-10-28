@@ -18,13 +18,13 @@ public class Experience {
 	@Column(name="userid")
 	private Integer userid;
 	@Column(name="experience_startdate")
-	private Integer experience_startdate;
+	private String experience_startdate;
 	@Column(name="experience_enddate")
-	private Integer experience_enddate;
+	private String experience_enddate;
 	@Column(name="experience_place")
-	private Integer experience_place;
+	private String experience_place;
 	@Column(name="experience_position")
-	private Integer experience_position;
+	private String experience_position;
 	public Integer getExperience_id() {
 		return experience_id;
 	}
@@ -37,30 +37,31 @@ public class Experience {
 	public void setUserid(Integer userid) {
 		this.userid = userid;
 	}
-	public Integer getExperience_startdate() {
+	public String getExperience_startdate() {
 		return experience_startdate;
 	}
-	public void setExperience_startdate(Integer experience_startdate) {
+	public void setExperience_startdate(String experience_startdate) {
 		this.experience_startdate = experience_startdate;
 	}
-	public Integer getExperience_enddate() {
+	public String getExperience_enddate() {
 		return experience_enddate;
 	}
-	public void setExperience_enddate(Integer experience_enddate) {
+	public void setExperience_enddate(String experience_enddate) {
 		this.experience_enddate = experience_enddate;
 	}
-	public Integer getExperience_place() {
+	public String getExperience_place() {
 		return experience_place;
 	}
-	public void setExperience_place(Integer experience_place) {
+	public void setExperience_place(String experience_place) {
 		this.experience_place = experience_place;
 	}
-	public Integer getExperience_position() {
+	public String getExperience_position() {
 		return experience_position;
 	}
-	public void setExperience_position(Integer experience_position) {
+	public void setExperience_position(String experience_position) {
 		this.experience_position = experience_position;
 	}
+	
 	
 
 }

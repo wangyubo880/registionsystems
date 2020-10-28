@@ -24,7 +24,7 @@ public class ExperienceService {
 		return list;
 	}
 	//查找某条学习经历
-	public List<Experience> findRelationByExperienceId(Integer id){
+	public List<Experience> findExperienceByExperienceId(Integer id){
 		List<Experience> list=experienceDao.selectExperienceByExperienceId(id);
 		return list;
 	}

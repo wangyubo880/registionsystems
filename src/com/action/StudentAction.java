@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.bean.Experience;
 import com.bean.Relation;
 import com.bean.Student;
 import com.bean.User;
+import com.service.ExperienceService;
 import com.service.RelationService;
 import com.service.StudentService;
 import com.service.UserService;
@@ -29,6 +31,8 @@ public class StudentAction {
 	private UserService userService;
 	@Autowired
 	private RelationService relationService;
+	@Autowired
+	private ExperienceService experienceService;
 	//报名测试3
 //	@RequestMapping("/informationinputsss")
 //	public String registerss(Student student,@RequestParam("user_img") MultipartFile user_img)throws Exception {
@@ -117,12 +121,9 @@ public class StudentAction {
 		List<Student> list=studentService.findStudentById(uid);
 		model.addAttribute("studentMessagelists",list);
 		List<Relation> lists=relationService.findRelationById(uid);
-//		System.out.println("输出list中第一个值");
-//		System.out.println(list.get(0));
-//		System.out.println("输出list中第2个值");
-//		System.out.println(list.get(1));
-		
 		model.addAttribute("relationlist",lists);
+		List<Experience> list2=experienceService.findExperienceById(uid);
+		model.addAttribute("experiencelist",list2);
 		//return "redirect:relation.do"; 
 		return "informationlist";
 	}
