@@ -51,8 +51,12 @@ public class UserAction {
 			System.out.println("登陆成功");
 			return "redirect:informationlist.do"; 
 		}
-			else if(status.equals("2")){   //状态2 报名成功
+			else if(result&&status.equals("2")){   //状态2 报名成功
+				System.out.println("报名成功状态");
 				return "login";
+				
+			}else if(!result){
+				return "login"; //登录失败
 			}else {
 				return "informationinput";
 			}

@@ -217,17 +217,31 @@ td
 	</tr>
 </c:forEach>
 <tr><td colspan="4"><a href="updaterelation.do">修改</a></tr>
-<!--  
-<tr>
-<form action="relationinput.do" method="post" >
-	<td><input id="user_name" name="user_name"  type="text" placeholder="与本人关系"/></td>
-	<td><input id="user_phone" name="user_phone"  type="text" placeholder="姓名"/></td>
-	<td><input id="user_phone" name="user_phone"  type="text" placeholder="工作单位"/></td>
-	<td><input id="user_phone" name="user_phone"  type="text" placeholder="联系电话"/></td>
-	<td><input type="submit" value="保存" />
-	</td>
+
+
+</table>
+<table  class="altrowstable" id="alternatecolor" align="center">
+<tr><th colspan="4">学习经历</th></tr>
+<tr><th>开始时间</th>
+<th>结束时间</th>
+<th>学习或工作经历</th>
+<th>但任何职务</th>
+<!-- <th><a href="updaterelation.do">修改</a></th> -->
 </tr>
- -->
+
+<c:forEach items="${experiencelist}" var="experience">
+<tr>
+	<td>${experience.experience_startdate}</td>
+	<td>${experience.experience_enddate}</td>
+	<td>${experience.experience_place}</td>
+	<td>${experience.experience_position}</td>
+	
+	
+	</td>
+	</tr>
+</c:forEach>
+<tr><td colspan="4"><a href="updateexperience.do">修改</a></tr>
+
 
 </table>
 </p>

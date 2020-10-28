@@ -34,7 +34,7 @@ public class ExperienceAction {
 		Integer uid=(Integer)session.getAttribute("uid");
 		List<Experience> list=experienceService.findExperienceById(uid);
 //		List<Relation> list=relationService.findAll();
-		model.addAttribute("exxperiencelist",list);
+		model.addAttribute("experiencelist",list);
 		System.out.println("先传参到relationaction");
 		return "addexperience";
 		//return "relation";

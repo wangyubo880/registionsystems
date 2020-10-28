@@ -29,5 +29,18 @@
 			})
 			console.log(d)
 		</script>
+		
+		<div id='date2'>
+			<input type="text" value='' placeholder="点击选择时间" id="inputdate2" />
+		</div>
+		<div>请点击输入框查看效果</div>
+
+		<script type="text/javascript">
+			var d2 = new DateJs({
+				inputEl: "#inputdate2",
+				el: '#date2'
+			})
+			console.log(d2)
+		</script>
 </body>
 </html>
