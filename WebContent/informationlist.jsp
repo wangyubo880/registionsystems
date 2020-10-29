@@ -139,10 +139,10 @@ td
                                     <label for="user_phone" class="uname" data-icon="u" > Your telephone </label>
                                     <input id="user_phone" name="user_phone" value=${student.user_phone } required="required" type="text" placeholder="user_phone"/>
                                 </p>
-                                <p> 
+                                <!--  <p> 
                                     <label for="user_gender" class="uname" data-icon="u" > Your gender </label>
                                     <input id="user_gender" name="user_gender" value=${student.user_gender } required="required" type="text" placeholder="user_gender"/>
-                                </p>
+                                </p>-->
                                 <p> 
                                     <label for="user_national" class="uname" data-icon="u" > Your national </label>
                                     <input id="user_national" name="user_national" value=${student.user_national } required="required" type="text" placeholder="user_national"/>

@@ -1,15 +1,17 @@
 package com.bean;
 
-import java.util.Date;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.springframework.format.annotation.DateTimeFormat;
+
 
 @Entity
 @Table(name="userinformation")
@@ -24,8 +26,11 @@ public class Student {
 	private String user_name;
 	@Column(name="user_phone")
 	private String user_phone;
-	@Column(name="user_gender")
-	private String user_gender;
+//	@Column(name="user_gender")
+//	private Integer user_gender;
+	@ManyToOne
+	@JoinColumn(name="user_gender")
+	private StudentGender studentgender;
 	@Column(name="user_national")
 	private String user_national;
 	@Column(name="user_birthdate")
@@ -64,11 +69,11 @@ public class Student {
 	public void setUser_phone(String user_phone) {
 		this.user_phone = user_phone;
 	}
-	public String getUser_gender() {
-		return user_gender;
+	public StudentGender getStudentgender() {
+		return studentgender;
 	}
-	public void setUser_gender(String user_gender) {
-		this.user_gender = user_gender;
+	public void setStudentgender(StudentGender studentgender) {
+		this.studentgender = studentgender;
 	}
 	public String getUser_national() {
 		return user_national;
@@ -112,6 +117,7 @@ public class Student {
 	public void setUser_status(String user_status) {
 		this.user_status = user_status;
 	}
+	
 	
 	
 

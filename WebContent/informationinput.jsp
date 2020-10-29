@@ -4,6 +4,9 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 <%@ page import="com.bean.Relation" %>
+<%@ page import="com.bean.Student" %>
+<%@ page import="com.bean.Experience" %>
+<%@ page import="com.bean.StudentGender" %>
 <%@ page import="java.util.ArrayList" %> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -138,10 +141,25 @@ td
                                     <label for="user_phone" class="uname" data-icon="u" > Your telephone </label>
                                     <input id="user_phone" name="user_phone" required="required" type="text" placeholder="user_phone"/>
                                 </p>
+                                
+                                
+                                <p><label for="user_gender" class="uname" data-icon="u" > Your gender </label>
+                                <select name="studentgender">
+	                                	<option value="0">请选择</option>
+	                                    <c:forEach items="${genders}" var="gender">
+	                                    	<option value="${gender.gender_id}">${gender.gender_name}</option>
+	                                    </c:forEach>
+	                                </select>
+                                </p>
+                                
+                                <!--  
                                 <p> 
                                     <label for="user_gender" class="uname" data-icon="u" > Your gender </label>
                                     <input id="user_gender" name="user_gender" required="required" type="text" placeholder="user_gender"/>
                                 </p>
+                                
+                                -->
+                                
                                 <p> 
                                     <label for="user_national" class="uname" data-icon="u" > Your national </label>
                                     <input id="user_national" name="user_national" required="required" type="text" placeholder="user_national"/>

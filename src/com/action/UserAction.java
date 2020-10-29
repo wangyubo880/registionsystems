@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.bean.Relation;
 import com.bean.Student;
+import com.bean.StudentGender;
 import com.bean.User;
 import com.service.RelationService;
 import com.service.StudentService;
@@ -32,7 +33,7 @@ public class UserAction {
 	//²éÑ¯ÓÃ»§×´Ì¬
 	//ÓÃ»§µÇÂ¼
 	@RequestMapping("/login")
-	public String login(Model model,String username,String userpassword,Model model1,Model model2,HttpSession session,User user) {
+	public String login(StudentGender gender,Model model,String username,String userpassword,Model model1,Model model2,HttpSession session,User user) {
 		boolean result=userService.login(username, userpassword);
 		int uid=userService.selectid(username);
 		String status=studentService.selectStudentStatus(uid);
@@ -45,6 +46,8 @@ public class UserAction {
 		System.out.println(username);
 		System.out.println(userpassword);
 		session.setAttribute("uid", uid);  //»ñÈ¡userid
+		List<StudentGender> genders=studentService.showGender();
+		model.addAttribute("genders",genders);
 		if(result&&status.equals("1")) {  //×´Ì¬1 ²Ý¸å
 			
 			System.out.println(uid);
@@ -56,9 +59,12 @@ public class UserAction {
 				return "login";
 				
 			}else if(!result){
-				return "login"; //µÇÂ¼Ê§°Ü
+				model1.addAttribute("errormsg", "µÇÂ¼Ê§°Ü£¬ÓÃ»§Ãû»òÃÜÂë´íÎó");
+				return "index"; //µÇÂ¼Ê§°Ü
 			}else {
 				return "informationinput";
+				//return "redirect:informationinput.do";
+				//return "redirect:showgender.do";
 			}
 			
 //			List<Relation> list=relationService.findAll();

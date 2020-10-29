@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.bean.Student;
+import com.bean.StudentGender;
 import com.dao.StudentDao;
 
 @Service
@@ -14,6 +15,11 @@ import com.dao.StudentDao;
 public class StudentService {
 	@Autowired
 	private StudentDao studentDao;
+	//查询性别类别
+	//查询类别
+	public List<StudentGender> showGender(){
+		return studentDao.showGender();
+	}
 	//显示上传后的信息
 	public List<Student> findStudentById(Integer id){
 		//return studentDao.selectById(id);

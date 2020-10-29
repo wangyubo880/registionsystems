@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.bean.Relation;
-import com.bean.Student;
-import com.bean.User;
+
+
 import com.dao.RelationDao;
 
 @Service
