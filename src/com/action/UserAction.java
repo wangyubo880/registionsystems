@@ -59,7 +59,7 @@ public class UserAction {
 		}
 			else if(result&&status.equals("2")){   //状态2 报名成功
 				System.out.println("报名成功状态");
-				return "login";
+				return "redirect:enrollMsg.do";
 				
 			}else if(!result){
 				model1.addAttribute("errormsg", "登录失败，用户名或密码错误");

@@ -250,6 +250,25 @@ public class StudentAction {
 			return "index";
 		}
 	}
+	//报名成功展示
+	@RequestMapping("/enrollMsg")
+	public String showEnrollMessage(StudentGender gender,Model model2,HttpSession session,Model model) throws Exception{
+		Integer uid=(Integer)session.getAttribute("uid");
+		System.out.println("uid"+uid);
+		//根据uid查找性别  
+		List<Student> list=studentService.findStudentById(uid);
+		model.addAttribute("studentMessagelists",list);
+		List<Relation> lists=relationService.findRelationById(uid);
+		model.addAttribute("relationlist",lists);
+		List<Experience> list2=experienceService.findExperienceById(uid);
+		model.addAttribute("experiencelist",list2);
+		List<StudentGender> genders=studentService.showGender();
+		model2.addAttribute("genders",genders);
+		List<StudentNational> nationals=studentService.showNational();
+		model.addAttribute("nationals",nationals);
+		//return "redirect:relation.do"; 
+		return "enrollmessage";
+	}
 
 
 }
