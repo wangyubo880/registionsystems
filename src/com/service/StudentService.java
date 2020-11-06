@@ -39,6 +39,10 @@ public class StudentService {
 	public String selectStudentStatus(Integer id) {
 		return studentDao.selectStudentStatus(id);
 	}
+	//ÐÞ¸Ä×´Ì¬
+	public boolean updateStudentStatus(Integer id) {
+		return studentDao.updateStudentStatusMessage(id);
+	}
 
 
 }

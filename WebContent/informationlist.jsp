@@ -267,9 +267,12 @@ td
                                
                                 <p class="change_link">
 									Not a member yet ?
+									<a href="enroll.do">报名</a>
 									
 								</p>
                             </form>
+                            
+                            
                         </div>
 
                        

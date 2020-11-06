@@ -237,6 +237,19 @@ public class StudentAction {
 			return "login";
 		}
 	}
+	//点击报名 修改状态 显示信息
+	@RequestMapping("/enroll")
+	public String updateStudentStatusByid(HttpSession session,Model model) {
+		Integer userid=(Integer)session.getAttribute("uid");
+		boolean result=studentService.updateStudentStatus(userid);
+		
+		if(result) {
+			return "redirect:enrollmessage.do";
+		}else {
+			model.addAttribute("errormsg", "提交失败");
+			return "index";
+		}
+	}
 
 
 }

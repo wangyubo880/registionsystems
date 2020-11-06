@@ -18,6 +18,22 @@ import com.bean.User;
 public class StudentDao {
 	@Autowired
 	private SessionFactory sessionFactory;
+	//用户点击报名 修改当前用户状态
+	//修改学生信息
+	public boolean updateStudentStatusMessage(Integer userid) {
+		Session session=sessionFactory.getCurrentSession();
+		Query query=session.createQuery("update Student s set s.user_status=? where userid=?");
+		
+		query.setParameter(0, "2");
+		query.setParameter(1, userid);
+	
+		int result=query.executeUpdate();
+		if(result>0) {
+			return true;
+		}else {
+			return false;
+		}
+	}
 	//查询民族类别
 	public List<StudentNational> showNational(){
 		Session session = sessionFactory.getCurrentSession();
