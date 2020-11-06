@@ -130,7 +130,7 @@ td
 
 <form action="experienceinput.do" method="post" >
 <div id='date'>
-	<td><input id="experience_startdate" name="experience_startdate"  type="text" placeholder="开始时间"/></td>
+	<td><input id="experience_startdate" name="experience_startdate"  autocomplete="off" type="text" placeholder="开始时间"/></td>
 </div>
  
 <script type="text/javascript">
@@ -145,7 +145,7 @@ td
 		</script>
 		
 
-	<td><div id='date2'><input id="experience_enddate" name="experience_enddate"  type="text" placeholder="结束时间"/></div></td>
+	<td><div id='date2'><input id="experience_enddate" name="experience_enddate" autocomplete="off"  type="text" placeholder="结束时间"/></div></td>
 	
 
 		<script type="text/javascript">
@@ -156,8 +156,8 @@ td
 			})
 			console.log(d2)
 		</script>
-	<td><input id="experience_place" name="experience_place"  type="text" placeholder="学习或工作经历"/></td>
-	<td><input id="experience_position" name="experience_position"  type="text" placeholder="但任何职务"/></td>
+	<td><input id="experience_place" name="experience_place" autocomplete="off"  type="text" placeholder="学习或工作经历"/></td>
+	<td><input id="experience_position" name="experience_position" autocomplete="off"  type="text" placeholder="但任何职务"/></td>
 	<td><input type="submit" value="保存" />
 	</td>
 	</form>

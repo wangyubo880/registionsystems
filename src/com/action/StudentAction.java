@@ -19,7 +19,7 @@ import com.bean.Experience;
 import com.bean.Relation;
 import com.bean.Student;
 import com.bean.StudentGender;
-
+import com.bean.StudentNational;
 import com.service.ExperienceService;
 import com.service.RelationService;
 import com.service.StudentService;
@@ -35,6 +35,13 @@ public class StudentAction {
 	private RelationService relationService;
 	@Autowired
 	private ExperienceService experienceService;
+	//显示民族类别
+	@RequestMapping("/shownational")
+	public String showNational(StudentNational national,Model model) {
+		List<StudentNational> nationals=studentService.showNational();
+		model.addAttribute("nationals",nationals);
+		return "national";
+	}
 	//输入报名信息显示男女
 	@RequestMapping("/showgender")
 	public String showGender(StudentGender gender,Model model) {
@@ -50,11 +57,12 @@ public class StudentAction {
 //	}
 	//报名测试4
 	@RequestMapping("/informationinput")
-	public String addMessage(HttpSession session,Model model,HttpServletRequest request,@RequestParam("user_name") String user_name,@RequestParam("user_phone") String user_phone,@RequestParam("studentgender") Integer user_gender,@RequestParam("user_national") String user_national,@RequestParam("user_idnumber") String user_idnumber,@RequestParam("user_birthdate") String user_birthdate,@RequestParam("user_political") String user_political,@RequestParam("user_desc") String user_desc,@RequestParam("user_img") MultipartFile user_img) throws Exception{
+	public String addMessage(HttpSession session,Model model,HttpServletRequest request,@RequestParam("user_name") String user_name,@RequestParam("user_phone") String user_phone,@RequestParam("studentgender") Integer user_gender,@RequestParam("studentnational") Integer user_national,@RequestParam("user_idnumber") String user_idnumber,@RequestParam("user_birthdate") String user_birthdate,@RequestParam("user_political") String user_political,@RequestParam("user_desc") String user_desc,@RequestParam("user_img") MultipartFile user_img) throws Exception{
 //		List<Relation> list=relationService.findAll();
 //		model.addAttribute("relationlist",list);
 		
 		Integer userid=(Integer)session.getAttribute("uid");
+		
 //		System.out.println(user_img);
 //		System.out.println(user_name);
 //		System.out.println(userid);
@@ -68,12 +76,16 @@ public class StudentAction {
 		Student student = new Student();
 		StudentGender gender=new StudentGender();
 		gender.setGender_id(user_gender);
+		student.setStudentgender(gender);
+		StudentNational national=new StudentNational();
+		national.setNational_id(user_national);
+		student.setStudentnational(national);
 		student.setUser_name(user_name);
 		student.setUserid(userid);
 		student.setUser_phone(user_phone);
-		student.setStudentgender(gender);
+		
 		//student.setUser_gender(user_gender);
-		student.setUser_national(user_national);
+		//student.setUser_national(user_national);
 		student.setUser_birthdate(user_birthdate);
 		student.setUser_idnumber(user_idnumber);
 		student.setUser_political(user_political);
@@ -110,7 +122,7 @@ public class StudentAction {
 		System.out.println(student.getUser_name());
 		System.out.println(student.getUser_phone());
 		System.out.println(student.getStudentgender());
-		System.out.println(student.getUser_national());
+		//System.out.println(student.getUser_national());
 		System.out.println(student.getUser_birthdate());
 		System.out.println(student.getUser_idnumber());
 		System.out.println(student.getUser_political());
@@ -130,6 +142,7 @@ public class StudentAction {
 	public String showStudentMessage(StudentGender gender,Model model2,HttpSession session,Model model) throws Exception{
 		Integer uid=(Integer)session.getAttribute("uid");
 		System.out.println("uid"+uid);
+		//根据uid查找性别  
 		List<Student> list=studentService.findStudentById(uid);
 		model.addAttribute("studentMessagelists",list);
 		List<Relation> lists=relationService.findRelationById(uid);
@@ -138,12 +151,14 @@ public class StudentAction {
 		model.addAttribute("experiencelist",list2);
 		List<StudentGender> genders=studentService.showGender();
 		model2.addAttribute("genders",genders);
+		List<StudentNational> nationals=studentService.showNational();
+		model.addAttribute("nationals",nationals);
 		//return "redirect:relation.do"; 
 		return "informationlist";
 	}
 	//修改学生信息
 	@RequestMapping("/updatestudentmessage")
-	public String updateStudentMessage(HttpSession session,Model model,HttpServletRequest request,@RequestParam("user_name") String user_name,@RequestParam("user_phone") String user_phone,@RequestParam("user_gender") String user_gender,@RequestParam("user_national") String user_national,@RequestParam("user_idnumber") String user_idnumber,@RequestParam("user_birthdate") String user_birthdate,@RequestParam("user_political") String user_political,@RequestParam("user_desc") String user_desc,@RequestParam("user_img") MultipartFile user_img) throws Exception{
+	public String updateStudentMessage(HttpSession session,Model model,HttpServletRequest request,@RequestParam("user_name") String user_name,@RequestParam("user_phone") String user_phone,@RequestParam("studentgender") Integer user_gender,@RequestParam("studentnational") Integer user_national,@RequestParam("user_idnumber") String user_idnumber,@RequestParam("user_birthdate") String user_birthdate,@RequestParam("user_political") String user_political,@RequestParam("user_desc") String user_desc,@RequestParam("user_img") MultipartFile user_img) throws Exception{
 //		List<Relation> list=relationService.findAll();
 //		model.addAttribute("relationlist",list);
 		
@@ -159,16 +174,22 @@ public class StudentAction {
 //		System.out.println(user_political);
 //		System.out.println(user_desc);
 		Student student = new Student();
+		StudentGender gender=new StudentGender();
+		gender.setGender_id(user_gender);
+		student.setStudentgender(gender);
+		StudentNational national=new StudentNational();
+		national.setNational_id(user_national);
+		student.setStudentnational(national);
 		student.setUser_name(user_name);
 		student.setUserid(userid);
 		student.setUser_phone(user_phone);
 		//student.setUser_gender(user_gender);
-		student.setUser_national(user_national);
+		//student.setUser_national(user_national);
 		student.setUser_birthdate(user_birthdate);
 		student.setUser_idnumber(user_idnumber);
 		student.setUser_political(user_political);
 		student.setUser_desc(user_desc);
-		student.setUser_status("草稿");
+		student.setUser_status("1");   //草稿
 		//student.setUserinformation_id(8);
 		
 //		User user=new User();
@@ -200,7 +221,7 @@ public class StudentAction {
 		System.out.println(student.getUser_name());
 		System.out.println(student.getUser_phone());
 		//System.out.println(student.getUser_gender());
-		System.out.println(student.getUser_national());
+		//System.out.println(student.getUser_national());
 		System.out.println(student.getUser_birthdate());
 		System.out.println(student.getUser_idnumber());
 		System.out.println(student.getUser_political());

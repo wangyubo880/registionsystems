@@ -10,6 +10,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>login</title>
+<link rel="stylesheet" type="text/css" href="css/date.css" />
+		<script src="js/date.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/nongli.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			#date {
+				margin-left: 100px;
+			}
+		</style>
 <link rel="shortcut icon" href="../favicon.ico"> 
 
 <script type="text/javascript">
@@ -100,6 +108,41 @@ td
 							<c:forEach items="${experiencelist}" var="experience">
 							
                                 <h1>Update</h1> 
+ <p>    
+    <div id='date'>
+     <label for="experience_startdate" class="uname" data-icon="u"> 开始时间 </label>
+	<input id="experience_startdate" name="experience_startdate" value=${experience.experience_startdate } required="required" autocomplete="off" type="text" placeholder="开始时间"/>
+</div>
+ </p>
+<script type="text/javascript">
+			var d1 = new DateJs({
+				inputEl: "#experience_startdate",
+				el: '#date',
+				trigger: 'click'
+			})
+			console.log(d1)
+			
+			
+		</script>
+		 <p>
+	<div id='date2'>
+	<label for="experience_enddate" class="uname" data-icon="u" > 结束时间 </label>
+	<input id="experience_enddate" name="experience_enddate" value=${experience.experience_enddate } required="required" type="text" autocomplete="off" placeholder="experience_enddate"/>
+	
+	</p>
+
+		<script type="text/javascript">
+			var d2 = new DateJs({
+				inputEl: "#experience_enddate",
+				el: '#date2',
+				trigger: 'click'
+			})
+			console.log(d2)
+		</script>
+		
+
+                                
+                                <!--  
                                 <p> 
                                     <label for="experience_startdate" class="uname" data-icon="u" > 开始时间 </label>
                                     <input id="experience_startdate" name="experience_startdate" value=${experience.experience_startdate } required="required" type="text" placeholder="experience.experience_startdate"/>
@@ -108,6 +151,7 @@ td
                                     <label for="experience_enddate" class="uname" data-icon="u" > 结束时间 </label>
                                     <input id="experience_enddate" name="experience_enddate" value=${experience.experience_enddate } required="required" type="text" placeholder="experience_enddate"/>
                                 </p>
+                                -->
                                                                 <p> 
                                     <label for="experience_place" class="uname" data-icon="u" > 学习或工作经历 </label>
                                     <input id="experience_place" name="experience_place" value=${experience.experience_place } required="required" type="text" placeholder="experience_place"/>

@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.bean.Relation;
 import com.bean.Student;
 import com.bean.StudentGender;
+import com.bean.StudentNational;
 import com.bean.User;
 import com.service.RelationService;
 import com.service.StudentService;
@@ -48,6 +49,8 @@ public class UserAction {
 		session.setAttribute("uid", uid);  //»ñÈ¡userid
 		List<StudentGender> genders=studentService.showGender();
 		model.addAttribute("genders",genders);
+		List<StudentNational> nationals=studentService.showNational();
+		model.addAttribute("nationals",nationals);
 		if(result&&status.equals("1")) {  //×´Ì¬1 ²Ý¸å
 			
 			System.out.println(uid);

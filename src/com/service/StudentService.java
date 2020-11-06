@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.bean.Student;
 import com.bean.StudentGender;
+import com.bean.StudentNational;
 import com.dao.StudentDao;
 
 @Service
@@ -15,6 +16,10 @@ import com.dao.StudentDao;
 public class StudentService {
 	@Autowired
 	private StudentDao studentDao;
+	//查询民族类别
+	public List<StudentNational> showNational(){
+		return studentDao.showNational();
+	}
 	//查询性别类别
 	//查询类别
 	public List<StudentGender> showGender(){

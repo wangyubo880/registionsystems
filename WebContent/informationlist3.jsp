@@ -4,8 +4,10 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 <%@ page import="com.bean.Relation" %>
+<%@ page import="com.bean.Student" %>
+<%@ page import="com.bean.Experience" %>
+<%@ page import="com.bean.StudentGender" %>
 <%@ page import="java.util.ArrayList" %> 
-<%@ page import="com.bean.StudentNational" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -29,7 +31,6 @@ function altRows(id){
 		}
 	}
 }
-
 window.onload=function(){
 	altRows('alternatecolor');
 }
@@ -83,7 +84,6 @@ td
         } else {
             alert("您的设备不支持图片预览功能，如需该功能请升级您的设备！");
         }
-
         //获取文件
         var user_desc = fileDom.files[0];
         var imageType = /^image\//;
@@ -122,14 +122,14 @@ td
                     <a class="hiddenanchor" id="tologin"></a>
                     <div id="wrapper">
                         <div id="login" class="animate form">
+<!--  
+<table class="altrowstable" id="alternatecolor" align="center">-->
 
-							<form action="updatestudentmessage.do" method="post" enctype="multipart/form-data">
-							<c:forEach items="${studentMessagelists}" var="student">
-                             
+                            <form  action="informationinput.do" method="post"  enctype="multipart/form-data"> 
                                 <h1>Log in</h1> 
                                 <p> 
                                     <label for="user_name" class="uname" data-icon="u" > Your username </label>
-                                    <input id="user_name" name="user_name" value=${student.user_name } required="required" type="text" placeholder="user_name"/>
+                                    <input id="user_name" name="user_name" required="required" type="text" placeholder="user_name"/>
                                 </p>
                               <!--   <p> 
                                     <label for="userid" class="uname" data-icon="u" > Your userid </label>
@@ -137,43 +137,39 @@ td
                                 </p> -->
                                 <p> 
                                     <label for="user_phone" class="uname" data-icon="u" > Your telephone </label>
-                                    <input id="user_phone" name="user_phone" value=${student.user_phone } required="required" type="text" placeholder="user_phone"/>
+                                    <input id="user_phone" name="user_phone" required="required" type="text" placeholder="user_phone"/>
                                 </p>
-                                <!-- 
-                                                               <p><label  class="uname" data-icon="u" > Your gender </label>
-                                <input id="user_phone" name="studentgender" value=${student.studentgender.gender_name } required="required" type="text" placeholder="user_phone"/>
-                                </p> -->
-                                                                <p><label for="user_gender" class="uname" data-icon="u" > Your gender </label>
-                                <select name="studentgender">
+                                
+                                
+                                <p><label for="user_gender" class="uname" data-icon="u" > Your gender </label>
+                                <!-- <select name="studentgender">
 	                                	<option value="0">请选择</option>
 	                                    <c:forEach items="${genders}" var="gender">
 	                                    	<option value="${gender.gender_id}">${gender.gender_name}</option>
 	                                    </c:forEach>
-	                                </select>
+	                                </select> -->
+	                                <input id="user_phone" name="studentgender" value=${student.studentgender.gender_name } required="required" type="text" placeholder="user_phone"/>
                                 </p>
-                                                                 <p><label for="user_national" class="uname" data-icon="u" > Your national </label>
-                                <select name="studentnational">
-	                                	<option value="0">请选择</option>
-	                                    <c:forEach items="${nationals}" var="national">
-	                                    	<option value="${national.national_id}">${national.national_name}</option>
-	                                    </c:forEach>
-	                                </select>
-                                </p>
-                                <!-- 
                                 
-                                
-              <p> 
-                                    <label for="user_national" class="uname" data-icon="u" > Your national </label>
-                                    <input id="user_national" name="user_national" value=${student.studentnational.national_name } required="required" type="text" placeholder="user_national"/>
+                                <!--  
+                                <p> 
+                                    <label for="user_gender" class="uname" data-icon="u" > Your gender </label>
+                                    <input id="user_gender" name="user_gender" required="required" type="text" placeholder="user_gender"/>
                                 </p>
+                                
                                 -->
+                                
+                                <p> 
+                                    <label for="user_national" class="uname" data-icon="u" > Your national </label>
+                                    <input id="user_national" name="user_national" required="required" type="text" placeholder="user_national"/>
+                                </p>
                                 <p> 
                                     <label for="user_idnumber" class="uname" data-icon="u" > Your user_idnumber </label>
-                                    <input id="user_idnumber" name="user_idnumber" value=${student.user_idnumber } required="required" type="text" maxlength="18" placeholder="user_idnumber"/>
+                                    <input id="user_idnumber" name="user_idnumber" required="required" type="text" maxlength="18" placeholder="user_idnumber"/>
                                 </p>
                                 <p> 
                                     <label for="user_birthdate"  data-icon="u" > Your user_birthdate </label>
-                                     <input id="user_birthdate"  class="birthday" value=${student.user_birthdate } name="user_birthdate" required="required" type="text" placeholder="user_birthdate"/> 
+                                     <input id="user_birthdate"  class="birthday" name="user_birthdate" required="required" type="text" placeholder="user_birthdate"/> 
                                 	
                                 </p>
                                     <script>
@@ -188,90 +184,39 @@ td
     
 									});
 									</script>
-                               <p> 
+                                    
+                                    
+                                
+                                <p> 
                                     <label for="user_political" class="uname" data-icon="u" > Your user_political </label>
-                                    <input id="user_political" name="user_political" value=${student.user_political } required="required" type="text" placeholder="user_political"/>
+                                    <input id="user_political" name="user_political" required="required" type="text" placeholder="user_political"/>
                                 </p>
 
                                 <p> 
                                     <label for="user_img" class="uname" data-icon="u" > Your user_img </label>
-                                    <input id="user_img" name="user_img" required="required" value=${student.user_img } type="file" placeholder="user_desc" onchange="imgPreview(this)" "/>
+                                    <input id="user_img" name="user_img" required="required" type="file" placeholder="user_desc" onchange="imgPreview(this)" "/>
                                 </p>
                                 
                                 <p id="localImag"> 
                                 <label for="user_imgpreview" class="uname" data-icon="u" >  </label>
-                                    <img id="preview" src="admins/bookimg/${student.user_img}" width="100" height="100" style="diplay:none" />
-                                    
-                                    <!-- <img src="admins/bookimg/${carts.img}" class="img-responsive" alt=""> -->
+                                    <img id="preview" width="100" height="100" style="diplay:none" />
                                 </p>
                                 <p> 
                                     <label for="user_desc" class="uname" data-icon="u" > Your user_desc </label>
-                                    <input id="user_desc" name="user_desc" value=${student.user_desc } required="required" type="text" placeholder="user_desc"/>
+                                    <input id="user_desc" name="user_desc" required="required" type="text" placeholder="user_desc"/>
                                 </p>
-                                </c:forEach>
-                                 <p > 
-                                    <input type="submit" value="保存" /> 
-								</p>
-<p>
-<table  class="altrowstable" id="alternatecolor" align="center">
-<tr><th colspan="4">家庭关系</th></tr>
-<tr><th>与本人关系</th>
-<th>姓名</th>
-<th>工作单位</th>
-<th>联系电话</th>
-<!-- <th><a href="updaterelation.do">修改</a></th> -->
-</tr>
-
-<c:forEach items="${relationlist}" var="relation">
-<tr>
-	<td>${relation.relation_relation}</td>
-	<td>${relation.relation_name}</td>
-	<td>${relation.relation_workunits}</td>
-	<td>${relation.relation_telephone}</td>
-	
-	
-	</td>
-	</tr>
-</c:forEach>
-<tr><td colspan="4"><a href="updaterelation.do">修改</a></tr>
-
-
-</table>
-<table  class="altrowstable" id="alternatecolor" align="center">
-<tr><th colspan="4">学习经历</th></tr>
-<tr><th>开始时间</th>
-<th>结束时间</th>
-<th>学习或工作经历</th>
-<th>但任何职务</th>
-<!-- <th><a href="updaterelation.do">修改</a></th> -->
-</tr>
-
-<c:forEach items="${experiencelist}" var="experience">
-<tr>
-	<td>${experience.experience_startdate}</td>
-	<td>${experience.experience_enddate}</td>
-	<td>${experience.experience_place}</td>
-	<td>${experience.experience_position}</td>
-	
-	
-	</td>
-	</tr>
-</c:forEach>
-<tr><td colspan="4"><a href="updateexperience.do">修改</a></tr>
-
-
-</table>
-</p>
+  
                                 
             					
-                               
+                                <p > 
+                                    <input type="submit" value="保存" /> 
+								</p>
                                 <p class="change_link">
 									Not a member yet ?
 									
 								</p>
                             </form>
                         </div>
-
                        
 						
                     </div>

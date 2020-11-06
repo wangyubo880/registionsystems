@@ -145,9 +145,18 @@ td
                                 
                                 <p><label for="user_gender" class="uname" data-icon="u" > Your gender </label>
                                 <select name="studentgender">
-	                                	<option value="0">请选择</option>
+	                                	
 	                                    <c:forEach items="${genders}" var="gender">
 	                                    	<option value="${gender.gender_id}">${gender.gender_name}</option>
+	                                    </c:forEach>
+	                                </select>
+                                </p>
+                                
+                                 <p><label for="user_national" class="uname" data-icon="u" > Your national </label>
+                                <select name="studentnational">
+	                                	
+	                                    <c:forEach items="${nationals}" var="national">
+	                                    	<option value="${national.national_id}">${national.national_name}</option>
 	                                    </c:forEach>
 	                                </select>
                                 </p>
@@ -159,11 +168,12 @@ td
                                 </p>
                                 
                                 -->
-                                
+                                <!--  
                                 <p> 
                                     <label for="user_national" class="uname" data-icon="u" > Your national </label>
                                     <input id="user_national" name="user_national" required="required" type="text" placeholder="user_national"/>
                                 </p>
+                                -->
                                 <p> 
                                     <label for="user_idnumber" class="uname" data-icon="u" > Your user_idnumber </label>
                                     <input id="user_idnumber" name="user_idnumber" required="required" type="text" maxlength="18" placeholder="user_idnumber"/>

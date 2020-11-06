@@ -1,7 +1,5 @@
 package com.bean;
 
-
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,8 +8,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-
 
 @Entity
 @Table(name="userinformation")
@@ -31,8 +27,11 @@ public class Student {
 	@ManyToOne
 	@JoinColumn(name="user_gender")
 	private StudentGender studentgender;
-	@Column(name="user_national")
-	private String user_national;
+//	@Column(name="user_national")
+//	private String user_national;
+	@ManyToOne
+	@JoinColumn(name="user_national")
+	private StudentNational studentnational;
 	@Column(name="user_birthdate")
 	private String user_birthdate;
 	@Column(name="user_idnumber")
@@ -75,11 +74,11 @@ public class Student {
 	public void setStudentgender(StudentGender studentgender) {
 		this.studentgender = studentgender;
 	}
-	public String getUser_national() {
-		return user_national;
+	public StudentNational getStudentnational() {
+		return studentnational;
 	}
-	public void setUser_national(String user_national) {
-		this.user_national = user_national;
+	public void setStudentnational(StudentNational studentnational) {
+		this.studentnational = studentnational;
 	}
 	public String getUser_birthdate() {
 		return user_birthdate;
@@ -117,8 +116,7 @@ public class Student {
 	public void setUser_status(String user_status) {
 		this.user_status = user_status;
 	}
-	
-	
+
 	
 
 }

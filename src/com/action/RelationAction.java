@@ -11,12 +11,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bean.Relation;
+import com.bean.Student;
 import com.bean.User;
 import com.service.RelationService;
+import com.service.StudentService;
 @Controller
 public class RelationAction {
 	@Autowired
 	private RelationService relationService;
+
+	@RequestMapping("/addrelation")
+	public String showRelationMessage(HttpSession session,Model model){
+		Integer uid=(Integer)session.getAttribute("uid");
+		List<Relation> list=relationService.findRelationById(uid);
+//		List<Relation> list=relationService.findAll();
+		model.addAttribute("relationlist",list);
+		System.out.println("先传参到relationaction");
+
+		return "addrelation";
+		//return "relation";
+	}
 	@RequestMapping("/relation")
 	public String showUserMessage(HttpSession session,Model model){
 		Integer uid=(Integer)session.getAttribute("uid");
@@ -34,7 +48,8 @@ public class RelationAction {
 //		List<Relation> list=relationService.findAll();
 		model.addAttribute("relationlist",list);
 		System.out.println("先传参到relationaction");
-		return "addrelation";
+		return "redirect:addrelation.do";
+		//return "addrelation";
 		//return "relation";
 	}
 	//添加家庭关系
@@ -51,7 +66,8 @@ public class RelationAction {
 		List<Relation> list=relationService.findRelationById(userid);
 		model.addAttribute("relationlist",list);
 		if(result) {
-			return "addrelation";
+			return "redirect:addrelation.do";
+			//return "addrelation";
 			//return "redirect:login.do";
 		}else {
 			model.addAttribute("errormsg", "注册失败");

@@ -11,14 +11,21 @@ import org.springframework.stereotype.Repository;
 import com.bean.Relation;
 import com.bean.Student;
 import com.bean.StudentGender;
+import com.bean.StudentNational;
 import com.bean.User;
 
 @Repository
 public class StudentDao {
 	@Autowired
 	private SessionFactory sessionFactory;
+	//查询民族类别
+	public List<StudentNational> showNational(){
+		Session session = sessionFactory.getCurrentSession();
+		Query query=session.createQuery("from StudentNational");
+		List<StudentNational> national=query.list();
+		return national;
+	}
 	//查询性别类别
-	//查询类别
 	public List<StudentGender> showGender(){
 		Session session = sessionFactory.getCurrentSession();
 		Query query=session.createQuery("from StudentGender");
@@ -46,12 +53,13 @@ public class StudentDao {
 	//修改学生信息
 	public boolean updateStudentMessage(Student student,Integer userid) {
 		Session session=sessionFactory.getCurrentSession();
-		Query query=session.createQuery("update Student s set s.user_name=?,s.user_phone=?,s.studentgender=?,s.user_national=?,s.user_birthdate=?,s.user_idnumber=?,s.user_political=?,s.user_img=?,s.user_desc=? where userid=?");
+		Query query=session.createQuery("update Student s set s.user_name=?,s.user_phone=?,s.studentgender=?,s.studentnational=?,s.user_birthdate=?,s.user_idnumber=?,s.user_political=?,s.user_img=?,s.user_desc=? where userid=?");
 		
 		query.setParameter(0, student.getUser_name());
 		query.setParameter(1, student.getUser_phone());
 		query.setParameter(2, student.getStudentgender());
-		query.setParameter(3, student.getUser_national());
+		query.setParameter(3, student.getStudentnational());
+		//query.setParameter(3, student.getUser_national());
 		query.setParameter(4, student.getUser_birthdate());
 		query.setParameter(5, student.getUser_idnumber());
 		query.setParameter(6, student.getUser_political());
