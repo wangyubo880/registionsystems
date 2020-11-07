@@ -11,7 +11,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<script src="http://apps.bdimg.com/libs/jquery/1.8.3/jquery.min.js"></script>
+
 	<script type="text/javascript">
     function imgPreview(fileDom){
         //判断是否支持FileReader
@@ -138,19 +138,19 @@ text-decoration:none;
 </head>
 <body>
 <br/><br/><br/><br/>
-<form  action="informationinput.do" method="post"  enctype="multipart/form-data"> 
-
+<form action="updatestudentmessage.do" method="post" enctype="multipart/form-data">
+<c:forEach items="${studentMessagelists}" var="student">
 <table class="bordered">
 
 <tr>
 	
 	<td width="100">姓名</td>
-	<td><input id="user_name" name="user_name" autocomplete="off" required="required" type="text" placeholder="user_name"/></td>
+	<td><input id="user_name" name="user_name" value=${student.user_name } required="required" type="text" placeholder="user_name"/></td>
 	<td>电话</td>
-	<td><input id="user_phone" name="user_phone" autocomplete="off" required="required" type="text" placeholder="user_phone"/></td>
-	<td rowspan="2"><input id="user_img" name="user_img" required="required"  type="file" placeholder="user_desc" onchange="imgPreview(this)" "/></td>
+	<td><input id="user_phone" name="user_phone" value=${student.user_phone } required="required" type="text" placeholder="user_phone"/></td>
+	<td rowspan="2"><input id="user_img" name="user_img" required="required" value=${student.user_img } type="file" placeholder="user_desc" onchange="imgPreview(this)" "/></td>
 	<td rowspan="2" id="localImag"><label for="user_imgpreview" class="uname" data-icon="u" >  </label>
-                                    <img id="preview"  width="100" height="100" style="diplay:none" />
+                                    <img id="preview" src="admins/bookimg/${student.user_img}" width="100" height="100" style="diplay:none" />
                                     
                                     <!-- <img src="admins/bookimg/${carts.img}" class="img-responsive" alt=""> -->
                                 </p></td>
@@ -173,9 +173,9 @@ text-decoration:none;
 </tr> 
 <tr>   
 	<td>身份证号</td>
-	<td><input id="user_idnumber" name="user_idnumber" autocomplete="off" required="required" type="text" maxlength="18" placeholder="user_idnumber"/></td>
+	<td><input id="user_idnumber" name="user_idnumber" value=${student.user_idnumber } required="required" type="text" maxlength="18" placeholder="user_idnumber"/></td>
 	<td>出生日期</td>
-	<td><input id="user_birthdate"  class="birthday"  name="user_birthdate" required="required" type="text" placeholder="user_birthdate"/>
+	<td><input id="user_birthdate"  class="birthday" value=${student.user_birthdate } name="user_birthdate" required="required" type="text" placeholder="user_birthdate"/></td>
 	<script>
 									$(document).on("keyup blur","#user_idnumber",function(){
     								var code=$(this).val();
@@ -187,26 +187,79 @@ text-decoration:none;
     									$("#user_birthdate").attr("value","");
     
 									});
-									</script></td>
-	
+									</script>
 	<td>政治面貌</td>
-	<td><input id="user_political" name="user_political" autocomplete="off" required="required" type="text" placeholder="user_political"/></td>
+	<td><input id="user_political" name="user_political" value=${student.user_political } required="required" type="text" placeholder="user_political"/></td>
 </tr>   
 <tr>
 	<td>补充信息</td>
 	<td colspan="5">
 		<textarea rows="3" cols="108" name="user_desc">
-		
+		${student.user_desc } 
 		</textarea>
 	</td>
 	</tr>
-	
+	 </c:forEach>
 <tr>
 	<td colspan="6" style="text-align:center;"><input type="submit" value="保存" /> </td>
+</tr>
+<tr>
+	<td colspan="6" style="text-align:center;">学习经历</td>
+</tr>
+<tr>   
+	<td>职务</td>
+	
+	<td colspan="2">开始时间</td>
+	
+	<td colspan="2">结束时间</td>
+	
+	<td>学习或工作经历</td>
+	
+</tr>
+<c:forEach items="${experiencelist}" var="experience">
+	<tr>
+		<td>${experience.experience_position}</td>
+		<td colspan="2">${experience.experience_startdate}</td>
+		<td colspan="2">${experience.experience_enddate}</td>
+		<td>${experience.experience_place}</td>
+	</tr>
+</c:forEach>
+<tr>
+	<td colspan="6" style="text-align:center;"><a href="updateexperience.do">修改</a></td>
 </tr>
 
 
 
+<tr>
+	<td colspan="6" style="text-align:center;">家庭关系</td>
+</tr>
+<tr>   
+	<td>姓名</td>
+	
+	<td colspan="2">与本人关系</td>
+	
+	<td colspan="2">工作单位</td>
+	
+	<td>联系电话</td>
+	
+</tr>
+<c:forEach items="${relationlist}" var="relation">
+<tr>
+	<td>${relation.relation_name}</td>
+	<td colspan="2">${relation.relation_relation}</td>
+	<td colspan="2">${relation.relation_workunits}</td>
+	<td>${relation.relation_telephone}</td>
+	
+	
+	
+	</tr>
+</c:forEach>
+<tr>
+	<td colspan="6" style="text-align:center;"><a href="updaterelation.do">修改</a></td>
+</tr>
+<tr>
+	<td colspan="6" style="text-align:center;"><a href="enroll.do">报名</a></td>
+</tr>
 
 <!-- <tr><td colspan="2"><input type="submit"></td></tr>    -->                                             
 </table>

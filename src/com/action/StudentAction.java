@@ -131,14 +131,14 @@ public class StudentAction {
 		System.out.println(student.getUser_status());
 		boolean result=userService.inputinformations(student);
 		if(result) {
-			return "redirect:informationlist.do"; 
+			return "redirect:informationlistNew.do"; 
 			//return "informationlist";
 		}else {
 			return "login";
 		}
 	}
 	//第一部分保存后显示
-	@RequestMapping("/informationlist")
+	@RequestMapping("/informationlistNew")
 	public String showStudentMessage(StudentGender gender,Model model2,HttpSession session,Model model) throws Exception{
 		Integer uid=(Integer)session.getAttribute("uid");
 		System.out.println("uid"+uid);
@@ -154,7 +154,7 @@ public class StudentAction {
 		List<StudentNational> nationals=studentService.showNational();
 		model.addAttribute("nationals",nationals);
 		//return "redirect:relation.do"; 
-		return "informationlist";
+		return "informationlistNew";
 	}
 	//修改学生信息
 	@RequestMapping("/updatestudentmessage")
@@ -231,7 +231,7 @@ public class StudentAction {
 		boolean result=studentService.updateStudentMessage(student, userid);
 		//boolean result=userService.inputinformations(student);
 		if(result) {
-			return "redirect:informationlist.do"; 
+			return "redirect:informationlistNew.do"; 
 			//return "informationlist";
 		}else {
 			return "login";
@@ -241,10 +241,13 @@ public class StudentAction {
 	@RequestMapping("/enroll")
 	public String updateStudentStatusByid(HttpSession session,Model model) {
 		Integer userid=(Integer)session.getAttribute("uid");
+		System.out.println("显示修改状态的uid");
+		System.out.println(userid);
 		boolean result=studentService.updateStudentStatus(userid);
-		
+		System.out.println("是否修改成功");
+		System.out.println(result);
 		if(result) {
-			return "redirect:enrollmessage.do";
+			return "redirect:enrollMsg.do";
 		}else {
 			model.addAttribute("errormsg", "提交失败");
 			return "index";
@@ -267,7 +270,7 @@ public class StudentAction {
 		List<StudentNational> nationals=studentService.showNational();
 		model.addAttribute("nationals",nationals);
 		//return "redirect:relation.do"; 
-		return "enrollmessage";
+		return "enrollmessage2";
 	}
 
 

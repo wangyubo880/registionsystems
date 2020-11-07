@@ -2,15 +2,13 @@
     pageEncoding="UTF-8"%>
     <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
-<%@ page import="com.bean.Relation" %>
+
 <%@ page import="java.util.ArrayList" %>  
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>修改家庭关系</title>
-
-<link rel="shortcut icon" href="../favicon.ico"> 
+<title>Insert title here</title>
 <style>
 table {
     *border-collapse: collapse; /* IE7 and lower */
@@ -109,28 +107,20 @@ text-decoration:none;
 </head>
 <body>
 <br/><br/><br/><br/>
-							<form action="updateRelationmessage.do" method="post" enctype="multipart/form-data">
-							<c:forEach items="${relationlist}" var="relation">
+<form action="adminaddclock.do" method="post" enctype="multipart/form-data">
 <table class="bordered">
-<tr>
-	<td>与本人关系</td>
-	<td><input id="relation_relation" name="relation_relation" value=${relation.relation_relation } required="required" type="text" placeholder="user_name"/>
-	  </td>     
-</tr>
-<tr>
-<td>姓名</td>
-<td><input id="relation_name" name="relation_name" value=${relation.relation_name } required="required" type="text" placeholder="user_name"/></td>
+
+
+<td>name</td>
+<td><input  name="name" type="text" ></td>
 </tr>	 
 <tr>
-<td>工作单位</td>
-<td><input id="relation_workunits" name="relation_workunits" value=${relation.relation_workunits } required="required" type="text" placeholder="user_name"/></td>
+<td>price</td>
+<td><input  name="price" type="text" ></td>
 </tr>    
-<td>联系电话</td>
-<td>
-<input id="relation_telephone" name="relation_telephone" value=${relation.relation_telephone } required="required" type="text" placeholder="user_name"/></td>
-</tr> 
-<input id="relation_id" name="relation_id" value=${relation.relation_id }  type="text" style="display:none"/>
-                                </c:forEach>  
+<td>img</td>
+<td><input name="imgs" type="file" ></td>
+</tr>   
 <tr><td colspan="2"><input type="submit"></td></tr>                                                
 </table></form>
 </body>

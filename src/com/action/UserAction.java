@@ -55,7 +55,7 @@ public class UserAction {
 			
 			System.out.println(uid);
 			System.out.println("登陆成功");
-			return "redirect:informationlist.do"; 
+			return "redirect:informationlistNew.do"; 
 		}
 			else if(result&&status.equals("2")){   //状态2 报名成功
 				System.out.println("报名成功状态");

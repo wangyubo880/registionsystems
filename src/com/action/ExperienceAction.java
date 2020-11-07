@@ -26,7 +26,7 @@ public class ExperienceAction {
 //		List<Relation> list=relationService.findAll();
 		model.addAttribute("experiencelist",list);
 		//System.out.println("先传参到relationaction");
-		return "informationlist";
+		return "informationlistNew";
 		//return "relation";
 	}
 	@RequestMapping("/updateexperience")

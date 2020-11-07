@@ -3,14 +3,14 @@
     <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 <%@ page import="com.bean.Relation" %>
+<%@ page import="java.util.ArrayList" %> 
+<%@ page import="com.bean.StudentNational" %>
 <%@ page import="java.util.ArrayList" %>  
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>修改家庭关系</title>
-
-<link rel="shortcut icon" href="../favicon.ico"> 
+<title>Insert title here</title>
 <style>
 table {
     *border-collapse: collapse; /* IE7 and lower */
@@ -109,29 +109,95 @@ text-decoration:none;
 </head>
 <body>
 <br/><br/><br/><br/>
-							<form action="updateRelationmessage.do" method="post" enctype="multipart/form-data">
-							<c:forEach items="${relationlist}" var="relation">
+<c:forEach items="${studentMessagelists}" var="student">
 <table class="bordered">
 <tr>
-	<td>与本人关系</td>
-	<td><input id="relation_relation" name="relation_relation" value=${relation.relation_relation } required="required" type="text" placeholder="user_name"/>
-	  </td>     
+	<td colspan="6" style="text-align:center;">报名表</td>
 </tr>
 <tr>
-<td>姓名</td>
-<td><input id="relation_name" name="relation_name" value=${relation.relation_name } required="required" type="text" placeholder="user_name"/></td>
+	
+	<td width="100">姓名</td>
+	<td>${student.user_name }</td>
+	<td>电话</td>
+	<td>${student.user_phone }</td>
+	<td rowspan="2">头像</td>
+	<td rowspan="2"><img id="preview" src="admins/bookimg/${student.user_img}" width="100" height="100" style="diplay:none" /></td>
 </tr>	 
 <tr>
-<td>工作单位</td>
-<td><input id="relation_workunits" name="relation_workunits" value=${relation.relation_workunits } required="required" type="text" placeholder="user_name"/></td>
-</tr>    
-<td>联系电话</td>
-<td>
-<input id="relation_telephone" name="relation_telephone" value=${relation.relation_telephone } required="required" type="text" placeholder="user_name"/></td>
+	<td>性别</td>
+	<td>${student.studentgender.gender_name }</td>
+	<td>民族</td>
+	<td>${student.studentnational.national_name }</td>
 </tr> 
-<input id="relation_id" name="relation_id" value=${relation.relation_id }  type="text" style="display:none"/>
-                                </c:forEach>  
-<tr><td colspan="2"><input type="submit"></td></tr>                                                
-</table></form>
+<tr>   
+	<td>身份证号</td>
+	<td>${student.user_idnumber }</td>
+	<td>出生日期</td>
+	<td>${student.user_birthdate }</td>
+	<td>政治面貌</td>
+	<td>${student.user_political }</td>
+</tr>   
+<tr>
+	<td>补充信息</td>
+	<td colspan="5">
+		<textarea rows="3" cols="108">
+		${student.user_desc }
+		</textarea>
+	</td>
+	</tr>
+	 </c:forEach>
+<tr>
+	<td colspan="6" style="text-align:center;">学习经历</td>
+</tr>
+<tr>   
+	<td>职务</td>
+	
+	<td colspan="2">开始时间</td>
+	
+	<td colspan="2">结束时间</td>
+	
+	<td>学习或工作经历</td>
+	
+</tr>
+<c:forEach items="${experiencelist}" var="experience">
+	<tr>
+		<td>${experience.experience_position}</td>
+		<td colspan="2">${experience.experience_startdate}</td>
+		<td colspan="2">${experience.experience_enddate}</td>
+		<td>${experience.experience_place}</td>
+	</tr>
+</c:forEach>
+
+
+
+
+<tr>
+	<td colspan="6" style="text-align:center;">家庭关系</td>
+</tr>
+<tr>   
+	<td>姓名</td>
+	
+	<td colspan="2">与本人关系</td>
+	
+	<td colspan="2">工作单位</td>
+	
+	<td>联系电话</td>
+	
+</tr>
+<c:forEach items="${relationlist}" var="relation">
+<tr>
+	<td>${relation.relation_name}</td>
+	<td colspan="2">${relation.relation_relation}</td>
+	<td colspan="2">${relation.relation_workunits}</td>
+	<td>${relation.relation_telephone}</td>
+	
+	
+	
+	</tr>
+</c:forEach>
+
+
+<!-- <tr><td colspan="2"><input type="submit"></td></tr>    -->                                             
+</table>
 </body>
 </html>

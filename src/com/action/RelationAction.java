@@ -38,7 +38,7 @@ public class RelationAction {
 //		List<Relation> list=relationService.findAll();
 		model.addAttribute("relationlist",list);
 		System.out.println("先传参到relationaction");
-		return "informationlist";
+		return "informationlistNew";
 		//return "relation";
 	}
 	@RequestMapping("/updaterelation")
